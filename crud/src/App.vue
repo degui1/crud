@@ -11,9 +11,19 @@
       <v-spacer></v-spacer>
 
       <v-btn
-        target="_blank"
         text
-        @click="link"
+        @click="() => {
+          link('table');
+        }"
+      >
+        <span class="mr-2" v-if="login===true">tabela de users</span>
+      </v-btn>
+
+      <v-btn
+        text
+        @click="() => {
+          link('login')
+        }"
       >
         <span class="mr-2" v-if="login===true">Logout</span>
         <span class="mr-2" v-if="login===false">Login</span>
@@ -33,13 +43,14 @@ export default {
 
   data() {
     return {
-      login: false,
+      login: true,
     }
   },
-  
+
   methods: {
-    link(){
-      switch (this.login) {
+    link(parm){
+      if (parm === 'login') {
+        switch (this.login) {
         case true:
           this.login = false
           this.$router.push('/')
@@ -48,6 +59,9 @@ export default {
           this.login = true 
           this.$router.push('/login')
           break;
+      }
+      } else if (parm === 'table') {
+        this.$router.push('/table')
       }
     }
   }

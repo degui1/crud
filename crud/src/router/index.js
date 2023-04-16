@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/loginView'
+import TableView from '../views/users'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/login',
     name: 'registerPage',
     component: LoginView
+  },
+  {
+    path: '/table',
+    name: 'tableUsers',
+    component: TableView
   }
   // {
   //   path: '/about',
